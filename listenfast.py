@@ -12,16 +12,29 @@ both = list(set().union(letters, numbers))
 # seqDomain=letters
 seqDomain=both
     
-seqLength=4
+defaultSeqLength=4
 tempo=0
 
 def listenfast():
+    seqLength=defaultSeqLength
     playAgain=True
     print('Hello and welcome to the ListenFast game!')
     print('This will help you to listen and process faster.')
-    print('sequence length is {}'.format(seqLength))
+    print('')
+    print('sequence length is currently {}'.format(seqLength))
+    print('enter desired sequence length, type length and press enter,')
+    possibleLength = raw_input('otherwise press enter for default: ')
+    if (possibleLength != ''):
+        seqLength = int(possibleLength)
+
+    print('')
+    print('listen for the sequence of characters.')
+    print('when prompted, type what you hear WITHOUT spaces.')
     raw_input('press enter to begin')
     print('')
+
+
+    
     while(playAgain):
         #determineSequence
         sequence = determineSequence(seqDomain, seqLength)
@@ -32,8 +45,8 @@ def listenfast():
         
         analyzeResponse(sequence, response)
 
-        again= raw_input("Play again(y/n)?: ")
-        if(not(again == '' or again == 'y')):
+        again= raw_input("Play again(Y/n)?: ")
+        if(not(again == '' or again == 'y' or again == 'Y')):
             playAgain=False
 
 
